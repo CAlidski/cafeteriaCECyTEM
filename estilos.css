@@ -1,0 +1,62 @@
+:root {
+  --verde-fuerte: #66BB6A;   /* Verde fuerte pastel */
+  --verde-claro: #DCEDC8;    /* Verde claro pastel */
+  --amarillo-cafe: #FFF8E1;  /* Fondo pastel amarillo café */
+}
+
+body {
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background: var(--amarillo-cafe);
+  color:#333;
+}
+
+header {
+  background: var(--verde-fuerte);
+  color: var(--verde-claro);
+  text-align:center;
+  padding:25px;
+}
+
+nav {
+  background: var(--verde-fuerte);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+}
+
+nav ul {
+  list-style:none;
+  display:flex;
+  margin:0;
+  padding:0;
+}
+
+nav ul li a {
+  display:block;
+  color: var(--verde-claro);
+  padding:10px 20px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+nav ul li a:hover {
+  background:#388E3C;
+}
+
+#carrito-icono {
+  color: var(--verde-claro);
+  font-weight:bold;
+  cursor:pointer;
+}
+
+section {
+  max-width:900px;
+  margin:40px auto;
+  background:white;
+  padding:30px;
+  border-radius:10px;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
