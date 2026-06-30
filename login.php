@@ -1,27 +1,43 @@
 <?php
+session_start();
 include("conexion.php");
 
-$usuario = $_POST['usuario'];
-$password = $_POST['password'];
+$usuario = trim($_POST["usuario"]);
+$password = trim($_POST["password"]);
 
 if (empty($usuario) || empty($password)) {
-    echo "Por favor, completa todos los campos.";
-    exit;
+    die("Completa todos los campos");
 }
 
-$sql = "SELECT password FROM usuarios WHERE usuario='$usuario'";
-$resultado = $conexion->query($sql);
+$stmt = $conexion->prepare("SELECT id,password FROM usuarios WHERE usuario=?");
+$stmt->bind_param("s", $usuario);
+$stmt->execute();
 
-if ($resultado->num_rows > 0) {
+$resultado = $stmt->get_result();
+
+if ($resultado->num_rows == 1) {
+
     $fila = $resultado->fetch_assoc();
-    if (password_verify($password, $fila['password'])) {
+
+    if (password_verify($password, $fila["password"])) {
+
+        $_SESSION["usuario"] = $usuario;
+        $_SESSION["id"] = $fila["id"];
+
         echo "Inicio de sesión correcto";
+
     } else {
+
         echo "Contraseña incorrecta";
+
     }
+
 } else {
+
     echo "Usuario no encontrado";
+
 }
 
+$stmt->close();
 $conexion->close();
 ?>

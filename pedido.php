@@ -1,14 +1,23 @@
 <?php
 include("conexion.php");
 
-$producto = $_POST['producto'];
-$precio = $_POST['precio'];
-$cantidad = $_POST['cantidad'];
+$producto = trim($_POST["producto"]);
+$precio = floatval($_POST["precio"]);
+$cantidad = intval($_POST["cantidad"]);
 
-$sql = "INSERT INTO pedidos (producto, precio, cantidad) VALUES ('$producto', '$precio', '$cantidad')";
-if (mysqli_query($conn, $sql)) {
-    echo "Pedido registrado ✅";
-} else {
-    echo "Error: " . mysqli_error($conn);
+if ($producto == "" || $cantidad <= 0) {
+    die("Datos inválidos");
 }
+
+$stmt = $conexion->prepare("INSERT INTO pedidos(producto,precio,cantidad) VALUES(?,?,?)");
+$stmt->bind_param("sdi",$producto,$precio,$cantidad);
+
+if($stmt->execute()){
+    echo "Pedido registrado";
+}else{
+    echo "Error al registrar pedido";
+}
+
+$stmt->close();
+$conexion->close();
 ?>

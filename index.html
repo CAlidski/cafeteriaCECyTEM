@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cafetería Digital CECYTEM</title>
-<link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafetería Digital CECYTEM</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
@@ -13,225 +13,339 @@
     <p>Sistema de Gestión de Cafetería Escolar</p>
 </header>
 
-<!-- Registro y Login -->
+<!-- Registro e Inicio de Sesión -->
 <main id="registro-section">
+
     <section class="formulario">
         <h2>📝 Registro de Usuario</h2>
+
         <form id="registroForm">
-            <input type="text" id="usuario" placeholder="Usuario" required>
-            <input type="password" id="password" placeholder="Contraseña" required>
-            <button type="submit">Registrarse</button>
+
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Nombre de usuario"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Contraseña"
+                required
+            >
+
+            <button type="submit">
+                Registrarse
+            </button>
+
         </form>
+
     </section>
 
     <section class="formulario">
-        <h2>🔑 Iniciar Sesión</h2>
+
+        <h2>🔐 Iniciar Sesión</h2>
+
         <form id="loginForm">
-            <input type="text" id="loginUsuario" placeholder="Usuario" required>
-            <input type="password" id="loginPassword" placeholder="Contraseña" required>
-            <button type="submit">Ingresar</button>
+
+            <input
+                type="text"
+                id="loginUsuario"
+                placeholder="Usuario"
+                required
+            >
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Contraseña"
+                required
+            >
+
+            <button type="submit">
+                Ingresar
+            </button>
+
         </form>
+
     </section>
+
 </main>
 
-<!-- Contenido principal -->
+<!-- Contenido Principal -->
 <main id="contenido" style="display:none;">
-    <nav>
-        <ul>
-            <li><a href="#menu">Menú Escolar</a></li>
-            <li><a href="#encuesta">Encuesta</a></li>
-            <li><a href="#contacto">Contáctanos</a></li>
-        </ul>
-        <div id="carrito-icono">🛒 Carrito - Total: $<span id="total-icono">0</span></div>
-    </nav>
 
-    <!-- Menú Escolar -->
-    <section id="menu">
-        <h2>☕ Menú Escolar</h2>
-        <table>
-            <tr>
-                <th>Producto</th><th>Descripción</th><th>Categoría</th><th>Precio</th><th>Disponible</th><th>Acción</th>
-            </tr>
-            <tr data-stock="10"><td>Café Americano</td><td>Clásico y fuerte</td><td>Bebida</td><td>25</td><td>10</td><td><button class="agregar">Agregar</button></td></tr>
-            <tr data-stock="5"><td>Panini</td><td>Sándwich caliente</td><td>Comida</td><td>40</td><td>5</td><td><button class="agregar">Agregar</button></td></tr>
-        </table>
+<nav>
 
-        <!-- Carrito -->
-        <div id="carrito">
-            <h3>🛒 Carrito de Compras</h3>
-            <p>Total: $<span id="total">0</span></p>
-            <button id="eliminarTodo">Eliminar Todo</button>
-            <button id="pagar">Pagar</button>
-            <ul></ul>
-        </div>
-    </section>
+<ul>
 
-    <!-- Encuesta -->
-    <section id="encuesta" class="formulario">
-        <h2>📋 Encuesta de Satisfacción</h2>
-        <form id="encuestaForm">
-            <input type="text" id="opinion" placeholder="¿Qué café compras frecuentemente?" required>
-            <input type="email" id="correo" placeholder="Correo electrónico" required>
-            <select id="experiencia" required>
-                <option value="Alta">Alta</option>
-                <option value="Media">Media</option>
-                <option value="Baja">Baja</option>
-            </select>
-            <textarea id="sugerencia" placeholder="Escribe tu sugerencia"></textarea>
-            <button type="submit">Enviar Encuesta</button>
-        </form>
-    </section>
+<li><a href="#menu">Menú Escolar</a></li>
 
-    <!-- Contacto -->
-    <section id="contacto">
-        <h2>📞 Contáctanos</h2>
-        <p>Correo: soporte.cafeteriadigital@gmail.com</p>
-        <p>Teléfono: 55 1234 5678</p>
-    </section>
+<li><a href="#encuesta">Encuesta</a></li>
+
+<li><a href="#contacto">Contáctanos</a></li>
+
+<li><a href="logout.php">Cerrar sesión</a></li>
+
+</ul>
+
+<div id="carrito-icono">
+
+🛒 Total:
+$
+<span id="total-icono">0</span>
+
+</div>
+
+</nav>
+
+<section id="menu">
+
+<h2>🍔 Menú Escolar</h2>
+
+<table>
+
+<tr>
+
+<th>Producto</th>
+<th>Descripción</th>
+<th>Categoría</th>
+<th>Precio</th>
+<th>Stock</th>
+<th>Acción</th>
+
+</tr>
+
+<tr data-stock="10">
+
+<td>Café Americano</td>
+
+<td>Clásico y fuerte</td>
+
+<td>Bebida</td>
+
+<td>25</td>
+
+<td>10</td>
+
+<td>
+
+<button class="agregar">
+
+Agregar
+
+</button>
+
+</td>
+
+</tr>
+
+<tr data-stock="5">
+
+<td>Panini</td>
+
+<td>Sándwich caliente</td>
+
+<td>Comida</td>
+
+<td>40</td>
+
+<td>5</td>
+
+<td>
+
+<button class="agregar">
+
+Agregar
+
+</button>
+
+</td>
+
+</tr>
+
+<tr data-stock="8">
+
+<td>Capuchino</td>
+
+<td>Espumoso</td>
+
+<td>Bebida</td>
+
+<td>35</td>
+
+<td>8</td>
+
+<td>
+
+<button class="agregar">
+
+Agregar
+
+</button>
+
+</td>
+
+</tr>
+
+<tr data-stock="6">
+
+    <td>Chocolate Caliente</td>
+    <td>Con leche</td>
+    <td>Bebida</td>
+    <td>30</td>
+    <td>6</td>
+    <td>
+        <button class="agregar">Agregar</button>
+    </td>
+
+</tr>
+
+<tr data-stock="12">
+
+    <td>Croissant</td>
+    <td>Pan francés</td>
+    <td>Panadería</td>
+    <td>20</td>
+    <td>12</td>
+    <td>
+        <button class="agregar">Agregar</button>
+    </td>
+
+</tr>
+
+<tr data-stock="10">
+
+    <td>Jugo de Naranja</td>
+    <td>Natural</td>
+    <td>Bebida</td>
+    <td>22</td>
+    <td>10</td>
+    <td>
+        <button class="agregar">Agregar</button>
+    </td>
+
+</tr>
+
+<tr data-stock="7">
+
+    <td>Sandwich Integral</td>
+    <td>Jamón y queso</td>
+    <td>Comida</td>
+    <td>38</td>
+    <td>7</td>
+    <td>
+        <button class="agregar">Agregar</button>
+    </td>
+
+</tr>
+
+<tr data-stock="20">
+
+    <td>Galletas</td>
+    <td>Paquete individual</td>
+    <td>Snack</td>
+    <td>15</td>
+    <td>20</td>
+    <td>
+        <button class="agregar">Agregar</button>
+    </td>
+
+</tr>
+
+</table>
+
+<div id="carrito">
+
+    <h3>🛒 Carrito de Compras</h3>
+
+    <ul></ul>
+
+    <p>
+        <strong>Total: $<span id="total">0</span></strong>
+    </p>
+
+    <button id="eliminarTodo">
+        Vaciar Carrito
+    </button>
+
+    <button id="pagar">
+        Pagar
+    </button>
+
+</div>
+
+</section>
+
+<section id="encuesta" class="formulario">
+
+    <h2>📋 Encuesta de Satisfacción</h2>
+
+    <form id="encuestaForm">
+
+        <input
+            type="text"
+            id="opinion"
+            placeholder="¿Qué producto compras más?"
+            required
+        >
+
+        <input
+            type="email"
+            id="correo"
+            placeholder="Correo electrónico"
+            required
+        >
+
+        <select id="experiencia" required>
+
+            <option value="">Selecciona una opción</option>
+            <option value="Alta">Alta</option>
+            <option value="Media">Media</option>
+            <option value="Baja">Baja</option>
+
+        </select>
+
+        <textarea
+            id="sugerencia"
+            placeholder="Escribe una sugerencia"
+        ></textarea>
+
+        <button type="submit">
+            Enviar Encuesta
+        </button>
+
+    </form>
+
+</section>
+
+<section id="contacto">
+
+    <h2>📞 Contáctanos</h2>
+
+    <p><strong>Correo:</strong> soporte.cafeteriadigital@gmail.com</p>
+
+    <p><strong>Teléfono:</strong> 55 1234 5678</p>
+
+    <p><strong>Horario:</strong> Lunes a Viernes de 7:00 a.m. a 3:00 p.m.</p>
+
+</section>
+
 </main>
 
 <footer>
-    <br>Cafetería Digital © 2026
+
+    <hr>
+
+    <p>
+        ☕ Cafetería Digital CECYTEM &copy; 2026
+    </p>
+
 </footer>
 
-<script>
-// --- Registro ---
-document.getElementById("registroForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    let usuario = document.getElementById("usuario").value;
-    let password = document.getElementById("password").value;
+<!-- JavaScript -->
+<script src="main.js"></script>
 
-    fetch("registro.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `usuario=${encodeURIComponent(usuario)}&password=${encodeURIComponent(password)}`
-    })
-    .then(res => res.text())
-    .then(data => {
-        alert(data);
-        document.getElementById("registroForm").reset();
-    });
-});
-
-// --- Login ---
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    let usuario = document.getElementById("loginUsuario").value;
-    let password = document.getElementById("loginPassword").value;
-
-    fetch("login.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `usuario=${encodeURIComponent(usuario)}&password=${encodeURIComponent(password)}`
-    })
-    .then(res => res.text())
-    .then(data => {
-        if (data.includes("correcto")) {
-            alert("Bienvenido " + usuario);
-            document.getElementById("registro-section").style.display = "none";
-            document.getElementById("contenido").style.display = "block";
-        } else {
-            alert(data);
-        }
-    });
-});
-
-// --- Carrito ---
-let carrito = [];
-let carritoLista = document.querySelector("#carrito ul");
-let total = 0;
-
-function actualizarTotal() {
-    document.getElementById("total").textContent = total;
-    document.getElementById("total-icono").textContent = total;
-}
-
-function actualizarCarrito() {
-    carritoLista.innerHTML = "";
-    total = 0;
-
-    carrito.forEach((item, index) => {
-        total += item.precio;
-        let li = document.createElement("li");
-        li.textContent = `${item.producto} - $${item.precio}`;
-
-        let eliminarBtn = document.createElement("button");
-        eliminarBtn.textContent = "❌";
-        eliminarBtn.addEventListener("click", () => {
-            carrito.splice(index, 1);
-            actualizarCarrito();
-        });
-
-        li.appendChild(eliminarBtn);
-        carritoLista.appendChild(li);
-    });
-
-    actualizarTotal();
-}
-
-// Botón Agregar
-document.querySelectorAll(".agregar").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        let fila = e.target.closest("tr");
-        let producto = fila.children[0].textContent;
-        let precio = parseFloat(fila.children[3].textContent);
-        let stock = parseInt(fila.getAttribute("data-stock"));
-
-        if (stock > 0) {
-            carrito.push({ producto, precio });
-            fila.setAttribute("data-stock", stock - 1);
-            fila.children[4].textContent = stock - 1;
-            actualizarCarrito();
-        } else {
-            alert("Producto agotado ❌");
-        }
-    });
-});
-
-// Eliminar Todo
-document.getElementById("eliminarTodo").addEventListener("click", () => {
-    carrito = [];
-    actualizarCarrito();
-});
-
-// Pagar
-document.getElementById("pagar").addEventListener("click", () => {
-    if (total > 0) {
-        carrito.forEach(item => {
-            fetch("pedido.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `producto=${encodeURIComponent(item.producto)}&precio=${encodeURIComponent(item.precio)}`
-            });
-        });
-
-        alert(`Gracias por tu compra 🛒 Total pagado: $${total}`);
-        carrito = [];
-        actualizarCarrito();
-    } else {
-        alert("Tu carrito está vacío ❌");
-    }
-});
-
-// Encuesta
-document.getElementById("encuestaForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    let opinion = document.getElementById("opinion").value;
-    let correo = document.getElementById("correo").value;
-    let experiencia = document.getElementById("experiencia").value;
-    let sugerencia = document.getElementById("sugerencia").value;
-
-    fetch("encuesta.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `opinion=${encodeURIComponent(opinion)}&correo=${encodeURIComponent(correo)}&experiencia=${encodeURIComponent(experiencia)}&sugerencia=${encodeURIComponent(sugerencia)}`
-    })
-    .then(res => res.text())
-    .then(data => {
-        alert(data);
-        document.getElementById("encuestaForm").reset();
-    });
-});
-</script>
 </body>
-</html
+</html>

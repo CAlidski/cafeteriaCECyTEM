@@ -1,19 +1,32 @@
 <?php
 include("conexion.php");
 
-$producto = $_POST['producto'];
-$cantidad = intval($_POST['cantidad']);
-$accion = $_POST['accion']; // "restar" o "devolver"
+$producto = trim($_POST["producto"]);
+$cantidad = intval($_POST["cantidad"]);
+$accion = $_POST["accion"];
 
-if ($accion == "restar") {
-    $sql = "UPDATE productos SET stock = stock - $cantidad WHERE nombre = '$producto'";
-} elseif ($accion == "devolver") {
-    $sql = "UPDATE productos SET stock = stock + $cantidad WHERE nombre = '$producto'";
+if($accion=="restar"){
+
+    $stmt=$conexion->prepare("UPDATE productos SET stock=stock-? WHERE nombre=?");
+
+}else{
+
+    $stmt=$conexion->prepare("UPDATE productos SET stock=stock+? WHERE nombre=?");
+
 }
 
-if (mysqli_query($conn, $sql)) {
-    echo "Stock actualizado ✅";
-} else {
-    echo "Error: " . mysqli_error($conn);
+$stmt->bind_param("is",$cantidad,$producto);
+
+if($stmt->execute()){
+
+    echo "Stock actualizado";
+
+}else{
+
+    echo "Error al actualizar";
+
 }
+
+$stmt->close();
+$conexion->close();
 ?>
